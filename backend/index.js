@@ -4,11 +4,9 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-
 const { connection } = require("./config/db");
 const { userRoute } = require("./route/userRoute");
 const { authenticate } = require("./middleware/authentication.middleware");
-
 
 app.get("/", async (req, res) => {
     res.status(200).send("Welcome to BUYC Corp Backend");
@@ -17,9 +15,8 @@ app.get("/", async (req, res) => {
 
 app.use("/users", userRoute)
 
-app.use(authenticate)
+app.use("/inventory", inventoryRoute)
 
-app.use("/dealers", dealerRoute)
 
 app.listen(process.env.port, async (req, res) => {
     try {
