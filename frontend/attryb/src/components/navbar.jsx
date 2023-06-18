@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar">
-        <div className="navbar__logo">Logo</div>
+        <div className="navbar__logo">BuyCars</div>
         <div className="navbar__buttons">
           {!isLoggedIn && (
             <button onClick={handleSignupClick} className="navbar__button">

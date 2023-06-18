@@ -132,3 +132,46 @@
     background-color: #23527c; /* Set the background color on hover */
 }
  
+/* Styling for the container holding the sort and filter options */
+.inventory__filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Styling for the labels */
+ label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Styling for the select dropdowns */
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Styling for the individual options within the select dropdowns */
+ option {
+  padding: 8px;
+}
+
+/* Optional: Styling for the selected option within the select dropdowns */
+ select option:checked {
+  font-weight: bold;
+}
+
+/* Optional: Styling for the dropdown arrow */
+ select::-ms-expand {
+  display: none;
+}
+
+ select::after {
+  content: "\\25BC";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
