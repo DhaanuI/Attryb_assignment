@@ -119,7 +119,7 @@ inventoryRoute.patch("/update/:id", async (req, res) => {
     }
     catch (err) {
         console.log(err)
-        res.status(500).send({ "Error": err })
+        res.status(404).send( "Error" )
     }
 })
 
