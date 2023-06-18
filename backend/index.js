@@ -7,6 +7,7 @@ app.use(express.json());
 
 const { connection } = require("./config/db");
 const { userRoute } = require("./route/userRoute");
+const { authenticate } = require("./middleware/authentication.middleware");
 
 
 app.get("/", async (req, res) => {
@@ -16,6 +17,9 @@ app.get("/", async (req, res) => {
 
 app.use("/users", userRoute)
 
+app.use(authenticate)
+
+app.use("/dealers", dealerRoute)
 
 app.listen(process.env.port, async (req, res) => {
     try {

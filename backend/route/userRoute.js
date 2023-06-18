@@ -7,15 +7,13 @@ const moment = require("moment");
 
 require("dotenv").config();
 
-
 const { UserModel } = require("../model/userModel");
-
 
 userRoute.post("/register", async (req, res) => {
     const { name, email, password } = req.body
     const userFound = await UserModel.findOne({ email })
     if (userFound) {
-        res.send({ "message": "Already User registered" })
+        res.status(409)({ "message": "Already User registered" })
     }
     else {
         try {
@@ -28,7 +26,7 @@ userRoute.post("/register", async (req, res) => {
             });
         }
         catch (err) {
-            res.send({ "message": "ERROR" })
+            res.status(500)({ "message": "ERROR" })
         }
     }
 })
@@ -44,12 +42,12 @@ userRoute.post("/login", async (req, res) => {
                 res.status(201).send({ "message": "Validation done", "token": token })
             }
             else {
-                res.send({ "message": "INVALID credentials" })
+                res.status(401).send({ "message": "INVALID credentials" })
             }
         });
     }
     catch (err) {
-        res.send({ "message": "ERROR" })
+        res.status(500).send({ "message": "ERROR" })
     }
 })
 
