@@ -13,32 +13,53 @@ const { authenticate } = require("../middleware/authentication.middleware");
 
 // get all the inventory
 inventoryRoute.get("/", async (req, res) => {
-    try {
-        const data = await Marketplace_Inventory.find().populate('oemId userID');
-        res.status(200).send(data);
-    }
-    catch (err) {
-        console.log(err);
-        res.status(500).send({ "Message": "error in getting all Second Hand Cars" });
-    }
-})
+    const { sort, filterByColor } = req.query;
 
-// get specific inventory added by specific user
-inventoryRoute.get("/:id", async (req, res) => {
-    const ID = req.params.id;
     try {
-        const data = await Marketplace_Inventory.find({userID: ID}).populate('oemId userID');
-        res.status(200).send(data);
-    }
-    catch (err) {
-        console.log(err);
-        res.status(500).send({ "Message": "error in getting all Second Hand Cars" });
-    }
-})
+        let query = Marketplace_Inventory.find().populate('oemId userID');
 
+        if (sort) {
+            if (sort === 'price_desc') {
+                query = query.sort({ price: -1 });
+            } else if (sort === 'price_asc') {
+                query = query.sort({ price: 1 });
+            } else if (sort === 'mileage_desc') {
+                query = query.sort({ mileage: -1 });
+            } else if (sort === 'mileage_asc') {
+                query = query.sort({ mileage: 1 });
+            }
+        }
+
+        if (filterByColor) {
+            query = query.find({ color: filterByColor });
+        }
+
+        const data = await query.exec();
+        res.status(200).send(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ "Message": "Error in getting all Second Hand Cars" });
+    }
+});
 
 // authentication is applied for posting / updating and deleting a data
 inventoryRoute.use(authenticate)
+
+// get specific inventory added by specific user
+inventoryRoute.get("getuser", async (req, res) => {
+    const ID = req.body.userID;
+    try {
+        const data = await Marketplace_Inventory.find({ userID: ID }).populate('oemId userID');
+        res.status(200).send(data);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).send({ "Message": "error in getting all Second Hand Cars" });
+    }
+})
+
+
+
 
 // post a car details in inventory
 inventoryRoute.post("/add", async (req, res) => {
@@ -50,7 +71,9 @@ inventoryRoute.post("/add", async (req, res) => {
         numOfprevBuyers,
         registrationPlace,
         image,
+        price,
         title,
+        mileage,
         description,
         userID } = req.body;
     try {
@@ -62,7 +85,9 @@ inventoryRoute.post("/add", async (req, res) => {
             numOfprevBuyers,
             registrationPlace,
             image,
+            price,
             title,
+            mileage,
             description,
             userID
         })

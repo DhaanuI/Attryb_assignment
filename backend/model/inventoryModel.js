@@ -12,6 +12,8 @@ const inventorySchema = mongoose.Schema({
     registrationPlace: { required: true, type: String },
     image: { type: String, required: true },
     title: { type: String, required: true },
+    price: { required: true, type: Number },
+    mileage: { required: true, type: Number },
     description: { type: [String], required: true },
     oemId: { type: Schema.Types.ObjectId, ref: OEM_Specs },     // ref -  to populate values
     userID: { type: Schema.Types.ObjectId, ref: UserModel }

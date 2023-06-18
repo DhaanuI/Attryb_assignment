@@ -2,9 +2,11 @@ const express = require("express");
 
 // dotenv to securely store values 
 require("dotenv").config();
-
+const cors = require("cors")
 const app = express();
 app.use(express.json());
+
+app.use(cors())
 
 // importing necessary things from other files
 const { connection } = require("./config/db");
