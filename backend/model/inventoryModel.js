@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const { OEM_Specs } = require("./oem_specsModel");
 const { UserModel } = require("./userModel");
-
+const Schema = mongoose.Schema;
 
 const inventorySchema = mongoose.Schema({
     kilometer: { type: Number, required: true },
@@ -13,8 +13,8 @@ const inventorySchema = mongoose.Schema({
     image: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: [String], required: true },
-    oemId: { type: mongoose.Schema.Types.ObjectId, ref: OEM_Specs },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: UserModel }
+    oemId: { type: Schema.Types.ObjectId, ref: OEM_Specs },     // ref -  to populate values
+    userID: { type: Schema.Types.ObjectId, ref: UserModel }
 })
 
 

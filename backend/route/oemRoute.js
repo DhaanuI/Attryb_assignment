@@ -8,15 +8,13 @@ const { OEM_Specs } = require("../model/oem_specsModel");
 
 // get OEM specs of all else specific oem based on SEARCH
 oemRoute.get("/", async (req, res) => {
-    const { findSpecs } = req.query;
+    const { modelname, modelyear } = req.query
     try {
-        if (findSpecs) {
-            const [modelName, modelYear] = findSpecs.split(" ");
-            const specs = await OEM_Specs.find({
-                $or: [
-                    { modelName: { $regex: modelName, $options: "i" } },
-                    { modelYear: { $regex: modelYear, $options: "i" } }
-                ],
+        if (modelname && modelyear) {
+
+            const specs = await OEM_Specs.findOne({
+                modelName: { $regex: new RegExp(modelname, "i") },
+                modelYear: { $regex: new RegExp(modelyear, "i") }
             });
             res.status(200).send({ specs });
         }
