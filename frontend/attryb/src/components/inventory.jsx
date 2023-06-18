@@ -13,7 +13,7 @@ const Inventory = () => {
 
 
     const fetchInventory = async () => {
-        const url = `http://localhost:8080/inventory?sort=${sortOption}&filterByColor=${filterColor}`;
+        const url = `https://amused-yoke-hen.cyclic.app/inventory?sort=${sortOption}&filterByColor=${filterColor}`;
         try {
             const response = await fetch(url);
             if (response.ok) {
@@ -40,7 +40,7 @@ const Inventory = () => {
         if (token) {
             console.log(token, id)
             try {
-                const response = await fetch(`http://localhost:8080/inventory/update/${id}`, {
+                const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/update/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const Inventory = () => {
         const token = localStorage.getItem('token');
         if (token) {
             try {
-                const response = await fetch(`http://localhost:8080/inventory/delete/${id}`, {
+                const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/delete/${id}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization: token,

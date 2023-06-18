@@ -21,7 +21,6 @@ const SignupForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Create a user object with the form data
         const user = {
             name,
             email,
@@ -30,7 +29,7 @@ const SignupForm = () => {
 
         try {
             // Send a POST request to the registration endpoint
-            const response = await fetch('http://localhost:8080/users/register', {
+            const response = await fetch('https://amused-yoke-hen.cyclic.app/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +37,6 @@ const SignupForm = () => {
                 body: JSON.stringify(user)
             });
 
-            // Handle the response
             if (response.ok) {
                 // Registration successful
                 alert("User Logged in successfully")

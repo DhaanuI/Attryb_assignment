@@ -56,7 +56,7 @@ const AddCarForm = () => {
 
         try {
             // Make the POST request to the API endpoint
-            const response = await fetch('http://localhost:8080/inventory/add', {
+            const response = await fetch('https://amused-yoke-hen.cyclic.app/inventory/add', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(requestBody),

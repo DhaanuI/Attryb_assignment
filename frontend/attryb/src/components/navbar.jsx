@@ -62,7 +62,6 @@ const Navbar = () => {
               Log Out
             </button>
           )}
-          {/* Add the "Add Car" button */}
           {isLoggedIn && (
             <button onClick={handleAddCarClick} className="navbar__button">
               Add Car
@@ -83,9 +82,6 @@ const Navbar = () => {
             <SigninForm onLoginSuccess={handleLoginSuccess} />
           </div>
         )}
-        {/* Existing code... */}
-
-        {/* Display the AddCarForm when the user is logged in and showAddCar is true */}
         {isLoggedIn && showAddCar && (
           <div>
             <AddCarForm />
