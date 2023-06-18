@@ -11,9 +11,23 @@ const { OEM_Specs } = require("../model/oem_specsModel");
 const { authenticate } = require("../middleware/authentication.middleware");
 
 
+// get all the inventory
 inventoryRoute.get("/", async (req, res) => {
     try {
-        const data = await Marketplace_Inventory.find();
+        const data = await Marketplace_Inventory.find().populate('oemId userID');
+        res.status(200).send(data);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).send({ "Message": "error in getting all Second Hand Cars" });
+    }
+})
+
+// get specific inventory added by specific user
+inventoryRoute.get("/:id", async (req, res) => {
+    const ID = req.params.id;
+    try {
+        const data = await Marketplace_Inventory.find({userID: ID}).populate('oemId userID');
         res.status(200).send(data);
     }
     catch (err) {
@@ -23,8 +37,10 @@ inventoryRoute.get("/", async (req, res) => {
 })
 
 
+// authentication is applied for posting / updating and deleting a data
 inventoryRoute.use(authenticate)
 
+// post a car details in inventory
 inventoryRoute.post("/add", async (req, res) => {
     const {
         kilometer,
@@ -59,13 +75,14 @@ inventoryRoute.post("/add", async (req, res) => {
     }
 })
 
-
+// update a car details in inventory
 inventoryRoute.patch("/update/:id", async (req, res) => {
     const ID = req.params.id;
     const payload = req.body;
     const data = await Marketplace_Inventory.findOne({ _id: ID });
     const userid_in_req = payload.userID;
-    const userid_in_doc = data.userID;
+    const userid_in_doc = data.userID.toString();
+
     try {
         if (userid_in_req !== userid_in_doc) {
             res.status(401).send({ "message": "Oops, You're NOT Authorized" });
@@ -82,11 +99,13 @@ inventoryRoute.patch("/update/:id", async (req, res) => {
 })
 
 
+// delete a car details in inventory
 inventoryRoute.delete("/delete/:id", async (req, res) => {
     const ID = req.params.id;
-    const data = await Marketplace_Inventory.find({ _id: ID });
+    const data = await Marketplace_Inventory.findOne({ _id: ID });
     const userid_in_req = req.body.userID;
-    const userid_in_doc = data.userID;
+
+    const userid_in_doc = data.userID.toString();
     try {
         if (userid_in_req !== userid_in_doc) {
             res.status(401).send({ "message": "Oops, You're NOT Authorized" });
@@ -103,7 +122,19 @@ inventoryRoute.delete("/delete/:id", async (req, res) => {
 })
 
 
+// deleting multiple cars - unique one
+inventoryRoute.delete("/delete", async (req, res) => {
+    const { itemIds } = req.body;
+    try {
+        await Marketplace_Inventory.deleteMany({ _id: { $in: itemIds } });
+        res.status(200).send("Items deleted successfully");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while deleting items");
+    }
+})
+
 
 module.exports = {
-    noticeRoute
+    inventoryRoute
 }

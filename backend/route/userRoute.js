@@ -20,7 +20,7 @@ userRoute.post("/register", async (req, res) => {
             let dateFormat = moment().format('D-MM-YYYY');
 
             bcrypt.hash(password, 5, async function (err, hash) {
-                const data = new UserModel({ name, email, password: hash, date: dateFormat })
+                const data = new UserModel({ name, email, password: hash, registeredDate: dateFormat })
                 await data.save()
                 res.status(201).send({ "message": "User registered" })
             });
@@ -53,5 +53,5 @@ userRoute.post("/login", async (req, res) => {
 
 
 module.exports = {
-    noticeRoute
+    userRoute
 }
