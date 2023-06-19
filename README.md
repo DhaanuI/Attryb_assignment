@@ -36,15 +36,21 @@ If you wish to run this project in your local machine
 
 Follow the given steps:
 
-Clone our respository https://github.com/DhaanuI/Attryb_assignment
+* Clone our respository https://github.com/DhaanuI/Attryb_assignment
 
-Open our code in VS code
+* Open our code in VS code
 
-Then do npm install to require the necessary packages and dependencies
+* Then do npm install to require the necessary packages and dependencies
 
-Then initialize the server by writing 'npm run start' 
+* Go to Backend folder - cd backend
 
-Congrats! you have successfully started the application.
+* do npm run server
+
+* For frontend , go to Frontend, cd frontend
+
+* do npm start
+
+* Congrats! you have successfully started the application.
 
 
 # API Endpoints :
@@ -52,24 +58,24 @@ backend route
 https://amused-yoke-hen.cyclic.app/  -----> Home page 
 
 https://amused-yoke-hen.cyclic.app/users/register 
-- method : POST
+- method : POST   ||   status code : 201
 - to register users, 
 - body -> Name, Email, Password
 - Bcrypt to hash the password
 
 https://amused-yoke-hen.cyclic.app/users/login
-- method : POST
+- method : POST   ||   status code : 201
 - to login users
-- used JWT to store token
+- used JWT to create token
 
 
 https://amused-yoke-hen.cyclic.app/users/logout
-- method : POST
+- method : POST  
 - used blacklist json to store loggedout tokens
 
 
 https://amused-yoke-hen.cyclic.app/inventory/
-- method : GET
+- method : GET   ||   status code : 200
 - to get all the second hand car details 
 - sorting and filtering are achieved here by passing query 
 
@@ -77,19 +83,19 @@ https://amused-yoke-hen.cyclic.app/inventory/
 BELOW ARE AUTHENTICATED ROUTES
 
 https://amused-yoke-hen.cyclic.app/inventory/getuser
-- method : GET 
+- method : GET    ||   status code : 200
 - to get the car info added by specific user
 
 https://amused-yoke-hen.cyclic.app/inventory/add
-- method POST
+- method POST   ||   status code : 201
 - add car info along with ID of the dealer who is adding data
 
 https://amused-yoke-hen.cyclic.app/inventory/update/:id
-- method PATCH
+- method PATCH  
 - updates the car info (only by the dealer who originally add)
 
 https://amused-yoke-hen.cyclic.app/inventory/delete/:id
-- method DELETE
+- method DELETE 
 - DELETES the car info (only by the dealer who originally add)
 
 < --  MULTIPLE DELETE by dealers -- >
@@ -100,11 +106,11 @@ https://amused-yoke-hen.cyclic.app/inventory/delete
 
 
 https://amused-yoke-hen.cyclic.app/oemspecs/
-- method GET
+- method GET   ||   status code : 200
 - to get all the available OEM models
 
 https://amused-yoke-hen.cyclic.app/oemspecs/add
-- method POST
+- method POST   ||   status code : 201
 - to Post the OEM model info
 
 https://amused-yoke-hen.cyclic.app/oemspecs/oemmodels
