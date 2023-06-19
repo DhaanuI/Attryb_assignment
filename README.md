@@ -10,13 +10,13 @@ This Application lets you to register and Login and be able to post, list, updat
 # Home Page
 ![image](https://github.com/DhaanuI/Attryb_assignment/assets/112754832/4c58e869-56a3-4817-92fe-4c6735495d95)
 
-Click on Sign Up to Register
+# Click on Sign Up to Register
 ![image](https://github.com/DhaanuI/Attryb_assignment/assets/112754832/6ac33863-4748-494a-967b-33f19b2b46d2)
 
-Click on Login to Register
+# Click on Login to Register
 ![image](https://github.com/DhaanuI/Attryb_assignment/assets/112754832/b9fa765a-0cf8-4560-b071-4149c90ec4dd)
 
-You can do all CRUD operations if you are a registered user
+# You can do all CRUD operations if you are a registered user
 ![image](https://github.com/DhaanuI/Attryb_assignment/assets/112754832/59958c50-4416-41b7-b7a3-1580b071cc7f)
 
 
