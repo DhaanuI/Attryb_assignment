@@ -48,7 +48,9 @@ const SigninForm = ({ onLoginSuccess }) => {
                 onLoginSuccess();
             } else {
                 // Login failed
-                console.error('User login failed');
+                alert('User login failed');
+                setEmail('');
+                setPassword('');
             }
         } catch (error) {
             console.error('Error logging in:', error);
