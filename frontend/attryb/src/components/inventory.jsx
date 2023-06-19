@@ -46,16 +46,15 @@ const Inventory = () => {
                         'Content-Type': 'application/json',
                         Authorization: token,
                     },
-                    // Include the updated data in the request body if needed
                     // body: JSON.stringify(updatedData),
                 });
                 console.log(response);
-                // Handle the response accordingly
+
             } catch (error) {
                 console.error('An error occurred:', error);
             }
         } else {
-            // Handle the case when the user is not logged in
+            // Handling the case when the user is not logged in
             console.log('User not logged in');
         }
     };
@@ -72,18 +71,15 @@ const Inventory = () => {
                 });
                 if (response.ok) {
                     window.alert('Car info DELETED successfully!');
-                    // Reset the form or perform any other actions
-
                 } else {
                     // Error adding the car
                     window.alert('Error adding the car. Please try again.');
-
                 }
             } catch (error) {
                 console.error('An error occurred:', error);
             }
         } else {
-            // Handle the case when the user is not logged in
+            // Handling the case when the user is not logged in
             alert('User not logged in');
         }
     };

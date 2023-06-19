@@ -32,7 +32,6 @@ const AddCarForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         // Check if any of the fields are empty
         const emptyFields = Object.values(carData).some((value) => value === '');
         if (emptyFields) {
@@ -43,19 +42,17 @@ const AddCarForm = () => {
         // Retrieve the token from local storage
         const token = localStorage.getItem('token');
 
-        // Create the headers with the bearer token
         const headers = {
             'Content-Type': 'application/json',
             Authorization: `${token}`,
         };
 
-        // Create the request body with the car data
         const requestBody = {
             ...carData,
         };
 
         try {
-            // Make the POST request to the API endpoint
+            // Making the POST request to the API endpoint
             const response = await fetch('https://amused-yoke-hen.cyclic.app/inventory/add', {
                 method: 'POST',
                 headers,
@@ -65,15 +62,12 @@ const AddCarForm = () => {
             if (response.ok) {
                 // Car added successfully
                 window.alert('Car info added successfully!');
-                // Reset the form or perform any other actions
                 resetForm();
             } else {
                 // Error adding the car
                 window.alert('Error adding the car. Please try again.');
-
             }
         } catch (error) {
-            // Error occurred during the request
             window.alert('An error occurred. Please try again later.');
         }
     };

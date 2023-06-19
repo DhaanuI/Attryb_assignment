@@ -41,7 +41,6 @@ const Navbar = () => {
     setShowSignin(false);
   };
 
-
   return (
     <div>
       <nav className="navbar">

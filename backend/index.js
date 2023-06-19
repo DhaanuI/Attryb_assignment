@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
     res.status(200).send("Welcome to BUYC Corp Backend");
 })
 
-
+// redirect routes
 app.use("/users", userRoute)
 app.use("/oemspecs", oemRoute)
 app.use("/inventory", inventoryRoute)
