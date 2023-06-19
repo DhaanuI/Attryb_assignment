@@ -26,7 +26,7 @@ If you wish to run this project in your local machine
 
 Follow the given steps:
 
-Clone our respository [https://github.com/HANUMAT-SHARAN/attryb-buycars](https://github.com/DhaanuI/Attryb_assignment) 
+Clone our respository 
 
 Open our code in VS code
 
