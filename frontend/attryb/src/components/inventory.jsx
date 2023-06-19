@@ -231,7 +231,7 @@ const Inventory = () => {
             </div>
             <br /><br />
 
-            <button onClick={handleQuickRefresh}>Quick Refresh</button>
+            <button onClick={handleQuickRefresh} className="quick-refresh-btn">Quick Refresh</button>
 
             <div className="inventory__container">
                 {inventory.map((item) => (
