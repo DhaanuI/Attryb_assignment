@@ -58,7 +58,6 @@ const AddCarForm = () => {
                 headers,
                 body: JSON.stringify(requestBody),
             });
-            console.log(response)
             if (response.ok) {
                 // Car added successfully
                 window.alert('Car info added successfully!');

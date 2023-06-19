@@ -5,14 +5,12 @@ const Inventory = () => {
     const [inventory, setInventory] = useState([]);
     const [sortOption, setSortOption] = useState('');
     const [filterColor, setFilterColor] = useState('');
-    const [token, setToken] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false); // To control the visibility of the modal
     const [editedItem, setEditedItem] = useState(null); // To store the edited item details
-    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetchInventory();
-    }, [sortOption, filterColor, inventory]);
+    }, [sortOption]);
 
 
     const fetchInventory = async () => {
@@ -42,7 +40,6 @@ const Inventory = () => {
     const handleEdit = async (id) => {
         const token = localStorage.getItem('token');
         if (token) {
-            console.log(token, id);
             try {
                 const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/${id}`, {
                     headers: {
@@ -183,6 +180,10 @@ const Inventory = () => {
         }
     };
 
+    const handleQuickRefresh = () => {
+        fetchInventory();
+    };
+    
     const handleDelete = async (id) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -228,7 +229,9 @@ const Inventory = () => {
                     <option value="green">Green</option>
                 </select>
             </div>
-            <br /><br /><br />
+            <br /><br />
+
+            <button onClick={handleQuickRefresh}>Quick Refresh</button>
 
             <div className="inventory__container">
                 {inventory.map((item) => (
@@ -265,6 +268,3 @@ const Inventory = () => {
 };
 
 export default Inventory;
-
-//onClick={() => handleEdit(item.id)}
-// onClick={() => handleDelete(item.id)}
