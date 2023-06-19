@@ -42,7 +42,6 @@ const Inventory = () => {
     const handleEdit = async (id) => {
         const token = localStorage.getItem('token');
         if (token) {
-            console.log(token, id);
             try {
                 const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/${id}`, {
                     headers: {
