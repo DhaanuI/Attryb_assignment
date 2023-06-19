@@ -5,6 +5,16 @@ buycars.com. Buyers can look at the inventory and buy the car from buycars.com.
 
 This Application lets you to register and Login and be able to post, list, update, delete second hand cars.
 
+## Tech Stacks used:
+[![My Skills](https://skillicons.dev/icons?i=js,nodejs,express,mongodb,html,css,react)](https://skillicons.dev)
+
+## Tools used:
+[![My Skills](https://skillicons.dev/icons?i=vercel,github)](https://skillicons.dev)
+<img alt="Coder GIF" height=50 width=80 src="https://www.w3schools.com/whatis/img_npm.jpg" />
+
+
+
+
 # Live Demo Link [https://attryb-buycars.vercel.app](https://attryb-weld.vercel.app/)
 
 # Home Page
