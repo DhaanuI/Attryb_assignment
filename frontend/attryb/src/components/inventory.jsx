@@ -183,7 +183,7 @@ const Inventory = () => {
     const handleQuickRefresh = () => {
         fetchInventory();
     };
-    
+
     const handleDelete = async (id) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -268,3 +268,4 @@ const Inventory = () => {
 };
 
 export default Inventory;
+
