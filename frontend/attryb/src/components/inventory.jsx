@@ -38,27 +38,27 @@ const Inventory = () => {
         setFilterColor(e.target.value);
     };
 
-    
-  const handleEdit = async (id) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      console.log(token, id);
-      try {
-        const response = await fetch(`http://localhost:8080/inventory/${id}`, {
-          headers: {
-            Authorization: token,
-          },
-        });
-        const data = await response.json();
-        setEditedItem(data);
-        setIsModalOpen(true);
-      } catch (error) {
-        console.error('An error occurred:', error);
-      }
-    } else {
-      alert('User not logged in');
-    }
-  };
+
+    const handleEdit = async (id) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            console.log(token, id);
+            try {
+                const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/${id}`, {
+                    headers: {
+                        Authorization: token,
+                    },
+                });
+                const data = await response.json();
+                setEditedItem(data);
+                setIsModalOpen(true);
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        } else {
+            alert('User not logged in');
+        }
+    };
 
     function EditModal({ item, isOpen, onClose, onSubmit }) {
         const [editedTitle, setEditedTitle] = useState(item[0]?.title || '');
@@ -157,7 +157,7 @@ const Inventory = () => {
         const token = localStorage.getItem('token');
         if (token && id) {
             try {
-                const response = await fetch(`http://localhost:8080/inventory/update/${id}`, {
+                const response = await fetch(`https://amused-yoke-hen.cyclic.app/inventory/update/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -197,7 +197,7 @@ const Inventory = () => {
                     window.alert('Car info DELETED successfully!');
                 } else {
                     // Error adding the car
-                    window.alert('Error adding the car. Please try again.');
+                    window.alert('Not Authorised to delete the car');
                 }
             } catch (error) {
                 console.error('An error occurred:', error);
