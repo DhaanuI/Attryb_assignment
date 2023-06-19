@@ -26,7 +26,7 @@ If you wish to run this project in your local machine
 
 Follow the given steps:
 
-Clone our respository 
+Clone our respository https://github.com/DhaanuI/Attryb_assignment
 
 Open our code in VS code
 
